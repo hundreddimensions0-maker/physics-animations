@@ -89,3 +89,5 @@ class kcl(Scene):
             self.wait(0.5)
         self.play(Circumscribe(derivation1[6], color=YELLOW))
         self.wait(2)
+        self.play(FadeOut(derivation1))
+        self.wait(1)
