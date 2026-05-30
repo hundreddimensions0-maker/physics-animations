@@ -73,7 +73,7 @@ class kcl(Scene):
         g=VGroup(circuit, arrows)
         self.play(FadeOut(g,eq1))
         self.wait(1)
-        # ---------------- EQUATIONS ----------------
+        # ---------------- EQUATIONS1 ----------------
         eq1 = MathTex(r"I_{1}+I_{2}+I_{3}=0")
         eq2 = MathTex(r"I=\frac{dQ}{dt}")
         eq3 = MathTex(r"Q=ne")
@@ -91,3 +91,27 @@ class kcl(Scene):
         self.wait(2)
         self.play(FadeOut(derivation1))
         self.wait(1)
+        # ---------------- EQUATIONS2 ----------------
+        eq1 = MathTex(r"\frac{d}{dt}(n_{1}+n_{2}+n_{3})=0")
+        eq2 = MathTex(r"N=n_{1}+n_{2}+n_{3}")
+        eq3 = MathTex(r"\frac{dN}{dt}=0")     
+        derivation2 = VGroup(eq1, eq2, eq3)
+        derivation2.scale(0.7)
+        derivation2.arrange(DOWN, buff=0.5)
+        for eq in derivation2:
+            self.play(FadeIn(eq))
+            self.wait(0.5)
+        self.wait(1)
+        self.play(FadeOut(derivation2))
+        self.wait(1)
+        derivation2[0].move_to(UP*4)
+        txt = Text(
+    "There are two solutions to this equation:\n"
+    "1) N is a positive constant number\n"
+    "2) N is zero",
+    font_size=20,          # key fix (MathTex ke close)
+    line_spacing=0.8       # spacing tight
+)
+        self.play(Write(txt),FadeIn(derivation2[2]))
+
+
