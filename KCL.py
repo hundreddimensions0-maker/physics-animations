@@ -1,7 +1,7 @@
 # ---------------- 01 ----------------------------
-%%manim -v WARNING -r 1920,1080 -qk kcl
+%%manim -v WARNING -r 1920,1080 -qk kcl1
 from manim import *
-class kcl(Scene):
+class kcl1(Scene):
     def construct(self):
         # ---------------- CIRCUIT ----------------
         line  = Line(start=[-5, 0, 0],      end=[0, 0, 0])
