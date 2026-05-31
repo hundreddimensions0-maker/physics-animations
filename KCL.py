@@ -18,7 +18,7 @@ class kcl(Scene):
         eq1[0][6:8].set_color(RED)
         eq1.move_to(DOWN*3)
         eq1.scale(0.7)        # I_3
-        self.play(FadeIn(eq1))
+        
 
         # after scale(0.5):
         # line  : [-2.5,0] → [0,0]
@@ -69,6 +69,7 @@ class kcl(Scene):
                 lag_ratio=0.35
             )
         )
+        self.play(FadeIn(eq1))
         self.wait(1.2)
         g=VGroup(circuit, arrows)
         self.play(FadeOut(g,eq1))
