@@ -1,7 +1,55 @@
-# ---------------- 01 ----------------------------
+# ---------------- 02 ----------------------------
 %%manim -v WARNING -r 1920,1080 -qk kcl1
 from manim import *
 class kcl1(Scene):
+    def construct(self):
+        # ---------------- EQUATIONS1 ----------------
+        eq1 = MathTex(r"I_{1}+I_{2}+I_{3}=0")
+        eq2 = MathTex(r"I=\frac{dQ}{dt}")
+        eq3 = MathTex(r"Q=ne")
+        eq4 = MathTex(r"\frac{dQ_{1}}{dt}+\frac{dQ_{2}}{dt}+\frac{dQ_{3}}{dt}=0")
+        eq5 = MathTex(r"e\left(\frac{dn_{1}}{dt}+\frac{dn_{2}}{dt}+\frac{dn_{3}}{dt}\right)=0")
+        eq6 = MathTex(r"e\neq 0")
+        eq7 = MathTex(r"\frac{dn_{1}}{dt}+\frac{dn_{2}}{dt}+\frac{dn_{3}}{dt}=0")
+        derivation1 = VGroup(eq1, eq2, eq3, eq4, eq5, eq6, eq7)
+        derivation1.scale(0.7)
+        derivation1.arrange(DOWN, buff=0.5)
+        for eq in derivation1:
+            self.play(FadeIn(eq))
+            self.wait(0.5)
+        self.play(Circumscribe(derivation1[6], color=YELLOW))
+        self.wait(2)
+        self.play(FadeOut(derivation1))
+        self.wait(1)
+        # ---------------- EQUATIONS2 ----------------
+        eq1 = MathTex(r"\frac{d}{dt}(n_{1}+n_{2}+n_{3})=0")
+        eq2 = MathTex(r"N=n_{1}+n_{2}+n_{3}")
+        eq3 = MathTex(r"\frac{dN}{dt}=0")     
+        derivation2 = VGroup(eq1, eq2, eq3)
+        derivation2.scale(0.7)
+        derivation2.arrange(DOWN, buff=0.5)
+        for eq in derivation2:
+            self.play(FadeIn(eq))
+            self.wait(0.5)
+        self.wait(1)
+        self.play(FadeOut(derivation2))
+        self.wait(1)
+        derivation2[0].move_to(UP*4)
+        txt = Text(
+    "There are two solutions to this equation:\n"
+    "1) N is a positive constant number\n"
+    "2) N is zero",
+    font_size=20,          # key fix (MathTex ke close)
+    line_spacing=0.8       # spacing tight
+)
+        self.play(Write(txt),FadeIn(derivation2[2]))
+
+
+
+# ---------------- 01 ----------------------------
+%%manim -v WARNING -r 1920,1080 -qk kcl2
+from manim import *
+class kcl2(Scene):
     def construct(self):
         # ---------------- CIRCUIT ----------------
         line  = Line(start=[-5, 0, 0],      end=[0, 0, 0])
@@ -74,45 +122,4 @@ class kcl1(Scene):
         g=VGroup(circuit, arrows)
         self.play(FadeOut(g,eq1))
         self.wait(1)
-        # ---------------- EQUATIONS1 ----------------
-        eq1 = MathTex(r"I_{1}+I_{2}+I_{3}=0")
-        eq2 = MathTex(r"I=\frac{dQ}{dt}")
-        eq3 = MathTex(r"Q=ne")
-        eq4 = MathTex(r"\frac{dQ_{1}}{dt}+\frac{dQ_{2}}{dt}+\frac{dQ_{3}}{dt}=0")
-        eq5 = MathTex(r"e\left(\frac{dn_{1}}{dt}+\frac{dn_{2}}{dt}+\frac{dn_{3}}{dt}\right)=0")
-        eq6 = MathTex(r"e\neq 0")
-        eq7 = MathTex(r"\frac{dn_{1}}{dt}+\frac{dn_{2}}{dt}+\frac{dn_{3}}{dt}=0")
-        derivation1 = VGroup(eq1, eq2, eq3, eq4, eq5, eq6, eq7)
-        derivation1.scale(0.7)
-        derivation1.arrange(DOWN, buff=0.5)
-        for eq in derivation1:
-            self.play(FadeIn(eq))
-            self.wait(0.5)
-        self.play(Circumscribe(derivation1[6], color=YELLOW))
-        self.wait(2)
-        self.play(FadeOut(derivation1))
-        self.wait(1)
-        # ---------------- EQUATIONS2 ----------------
-        eq1 = MathTex(r"\frac{d}{dt}(n_{1}+n_{2}+n_{3})=0")
-        eq2 = MathTex(r"N=n_{1}+n_{2}+n_{3}")
-        eq3 = MathTex(r"\frac{dN}{dt}=0")     
-        derivation2 = VGroup(eq1, eq2, eq3)
-        derivation2.scale(0.7)
-        derivation2.arrange(DOWN, buff=0.5)
-        for eq in derivation2:
-            self.play(FadeIn(eq))
-            self.wait(0.5)
-        self.wait(1)
-        self.play(FadeOut(derivation2))
-        self.wait(1)
-        derivation2[0].move_to(UP*4)
-        txt = Text(
-    "There are two solutions to this equation:\n"
-    "1) N is a positive constant number\n"
-    "2) N is zero",
-    font_size=20,          # key fix (MathTex ke close)
-    line_spacing=0.8       # spacing tight
-)
-        self.play(Write(txt),FadeIn(derivation2[2]))
-
-
+       
